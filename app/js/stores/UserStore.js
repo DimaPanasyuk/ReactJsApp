@@ -10,7 +10,7 @@ Array.prototype.remove = function(from, to) {
 
 import AppDispatcher     from '../dispatcher/AppDispatcher';
 import MicroEvent        from '../microEvent';
-import { hashHistory   } from 'react-router';
+import { browserHistory   } from 'react-router';
 
 let UserStore;
 
@@ -73,7 +73,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 				Materialize.toast(`Виконано вхід у акаунт ${login}`, 4000);
 
 				UserStore.trigger('update');
-				hashHistory.push('/userInterface');
+				browserHistory.push('/userInterface');
 				break;
 
 			} else {
@@ -91,7 +91,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 
 	case 'USER_LOGOUT': 
 		
-		hashHistory.push('/');
+		browserHistory.push('/');
 		UserStore.current_user = {};
 		Materialize.toast('Виконано вихід з акаунту', 3000);
 		UserStore.trigger('update');
@@ -101,9 +101,9 @@ UserStore.dispatch = AppDispatcher.register(action => {
 
 		UserStore.current_user = action.value;
 		UserStore.trigger('update');
-		Materialize.toast(`Виконано перший вхід у акаунт 
+		Materialize.toast(`Виконано вхід у акаунт \n
 											 під логіном ${action.value.login}`, 4000);
-		hashHistory.push('/userInterface');
+		browserHistory.push('/userInterface');
 		break;
 
 	case 'CHANGE_USERINFO':
@@ -114,7 +114,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 				u_user.number  		= (action.value.phone.length >= 10) ? action.value.phone : u_user.number,
 				u_user.background = (action.value.background.length > 2) ? action.value.background : u_user.background;
 
-		Materialize.toast('Інформація про користувача оновлена', 3000);
+		Materialize.toast('Дані користувача оновлені', 3000);
 		UserStore.trigger('update');
 		break;
 
@@ -122,7 +122,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 		
 		action.value.user_address = UserStore.current_user.address;
 		UserStore.current_user.payments.push(action.value);
-		Materialize.toast('Додано новий комунальний платіж', 3000);
+		Materialize.toast('Додано комунальний платіж', 3000);
 		UserStore.trigger('update');
 		break;
 	

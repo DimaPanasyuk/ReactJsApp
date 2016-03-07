@@ -1,13 +1,14 @@
 import React 					 					 from 'react';
 import ReactDOM 			 					 from 'react-dom';
-import App 						 					 from './components/App'
-import AuthorisationController   from './components/AuthorisationController'
-import UserInterfaceController   from './components/UserInterfaceController'
+import App 						 					 from './components/App';
+import AuthorisationController   from './components/AuthorisationController';
+import UserInterfaceController   from './components/UserInterfaceController';
+import NoMatch 									 from './components/NoMatch';
 import {
 
 	Router, 
 	Route, 
-	hashHistory, 
+	browserHistory, 
 	IndexRoute 
 } from 'react-router'		
 
@@ -15,12 +16,13 @@ import {
 
 ReactDOM.render((
 	
-	<Router history={hashHistory}>
+	<Router history={browserHistory}>
 		
 		<Route path='/' component={App}>
 			
 			<IndexRoute component={AuthorisationController} />	
 			<Route path='/userInterface' component={UserInterfaceController} />
+			<Route path="*" component={NoMatch} />
 		</Route>
 	</Router>
 ), document.getElementById('app'));
