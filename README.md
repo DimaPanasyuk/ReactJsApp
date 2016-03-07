@@ -32,7 +32,7 @@
 </ul>
 
 <h1>How it works</h1>
-<p>When you "sign in" with default login and password, program makes AJAX request to the json file and takes information about default user from it, than program loads this data into Store (Flux) using Dispatcher (Flux) and redirect you to your personal page, that is totally rendered by React and displays defult information.</p>
+<p>When you "sign in" with default login and password, program makes AJAX request to the json file and takes information about default user from it, than program loads this data into Store (Flux) using Dispatcher (Flux) and redirect you to your personal page, which is totally rendered by React and displays defult information.</p>
 <p>When you choose "sign up", program takes your data and inserts it into Store, that is why, you will be able to see your information in your personal page.</p>
 
 <h4>You can try this application by visiting this link http://jek.esy.es/</h4>
