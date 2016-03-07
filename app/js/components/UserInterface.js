@@ -26,7 +26,6 @@ let	Payment = function(options) {
 
 		color = `#${first_sign}${second_sign}`;
 		color += `${third_sign}${fourth_sign}${fifth_sign}${sixth_sign}`;
-		console.log(color);
 		return color;
 	})();
 	this.user_address    = null;
@@ -35,13 +34,13 @@ let	Payment = function(options) {
 
 export default React.createClass({
 		
-	getInitialState: function() {
+	// getInitialState: function() {
 
-		return {
+	// 	return {
 
-			payment_index: null
-		}
-	},
+	// 		payment_index: null
+	// 	}
+	// },
 
 	//componentDidMount needs refactoring
 	//too big function
@@ -102,7 +101,6 @@ export default React.createClass({
 
 		$change_payment_info_btn
 		.on('click', function() {
-			console.log('Clicked change');
 			$change_payment_info_modal.fadeIn('slow');
 			$('html, body')
 			.on('touchmove scroll mousewheel', function() {
@@ -199,8 +197,6 @@ export default React.createClass({
 					payment_name: name,
 					payment_account: account 
 				});
-		console.log('added next');
-		console.log(new_payment);
 		AddPaymentAction(new_payment);
 	},
 
@@ -229,32 +225,32 @@ export default React.createClass({
 		ChangeUserInfoAction(changes);
 	},
 	
-	_getPaymentIndex: function(elem) {
+	// _getPaymentIndex: function(elem) {
 
-		let $payment_item  = elem.parents('.app__user-payment'),
-				$payment_index = $payment_item.index();
+	// 	let $payment_item  = elem.parents('.app__user-payment'),
+	// 			$payment_index = $payment_item.index();
 
-		this.setState({
+	// 	this.setState({
 
-			payment_index: $payment_index
-		});
-	},
+	// 		payment_index: $payment_index
+	// 	});
+	// },
 
-	_changePaymentInfo: function(e) {
+	// _changePaymentInfo: function(e) {
 
-		e.preventDefault();
+	// 	e.preventDefault();
 
-		let payment_name 	  = this.refs.payment_change_name.value,
-				payment_account = this.refs.payment_change_account.value,
-				payment_index   = this.state.payment_index;
+	// 	let payment_name 	  = this.refs.payment_change_name.value,
+	// 			payment_account = this.refs.payment_change_account.value,
+	// 			payment_index   = this.state.payment_index;
 
-		ChangePaymentInfoAction({
+	// 	ChangePaymentInfoAction({
 
-			name: payment_name,
-			account: payment_account,
-			index: payment_index
-		});
-	},
+	// 		name: payment_name,
+	// 		account: payment_account,
+	// 		index: payment_index
+	// 	});
+	// },
 
 	_logOut: function() {
 
@@ -277,8 +273,8 @@ export default React.createClass({
 				return (
 					
 					<SinglePayment remove={_this._deletePayment} 
-												 key={i} 
-												 payment={payment}/>
+								   key={i} 
+								   payment={payment}/>
 				)
 			});
 		};

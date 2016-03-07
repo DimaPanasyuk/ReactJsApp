@@ -1,38 +1,41 @@
 import React 				 from 'react';
-import UserInterface from '../components/UserInterface';
-import UserStore 		 from '../stores/UserStore';
 import MicroEvent    from '../microEvent';
+import UserStore 	 	 from '../stores/UserStore';
+import UserInterface from '../components/UserInterface';
 
 export default React.createClass({
 
-	componentDidMount: function() {
+	getInitialState() {
+
+		return {
+
+			user: UserStore.returnUserInfo()
+		}
+	},
+
+	_storeUpdate() {
+
+		this.setState({
+
+			user: UserStore.returnUserInfo()
+		});
+	},
+
+	componentDidMount() {
 		
 		UserStore.bind('update', this._storeUpdate);
 	},
 
-	_storeUpdate: function() {
+	componentWillUnmount() {
 
-		let current_user = UserStore.returnUserInfo();
-		this.setState({
-
-			user: current_user
-		});
-	},	
-	
-	componentWillMount: function() {
-
-		let current_user = UserStore.returnUserInfo();
-		this.setState({
-
-			user: current_user
-		});
+		UserStore.unbind('update', this._storeUpdate);
 	},
 
-	render: function() {
+	render() {
 
 		return (
 
 			<UserInterface user_info={this.state.user}/>
 		)
 	}
-})
+});

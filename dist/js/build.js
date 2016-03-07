@@ -198,7 +198,7 @@ _reactDom2.default.render(_react2.default.createElement(
 	)
 ), document.getElementById('app'));
 
-},{"./components/App":9,"./components/AuthorisationController":11,"./components/UserInterfaceController":15,"react":237,"react-dom":24,"react-router":52}],9:[function(require,module,exports){
+},{"./components/App":9,"./components/AuthorisationController":11,"./components/UserInterfaceController":14,"react":237,"react-dom":24,"react-router":52}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -236,9 +236,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Login = require('./Login');
+var _logIn = require('./logIn');
 
-var _Login2 = _interopRequireDefault(_Login);
+var _logIn2 = _interopRequireDefault(_logIn);
 
 var _signUp = require('./signUp');
 
@@ -342,7 +342,7 @@ exports.default = _react2.default.createClass({
 								{ className: 'app__auth-signup waves-effect waves-light btn' },
 								'Реєстрація'
 							),
-							_react2.default.createElement(_Login2.default, { logIn: this._handleLogIn }),
+							_react2.default.createElement(_logIn2.default, { logIn: this._handleLogIn }),
 							_react2.default.createElement(_signUp2.default, { signUp: this._handleSignUp })
 						)
 					)
@@ -352,7 +352,7 @@ exports.default = _react2.default.createClass({
 	}
 });
 
-},{"../actions/LogInAction":4,"../actions/SignUpAction":7,"./Login":12,"./signUp":16,"react":237}],11:[function(require,module,exports){
+},{"../actions/LogInAction":4,"../actions/SignUpAction":7,"./logIn":15,"./signUp":16,"react":237}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -388,91 +388,6 @@ exports.default = _react2.default.createClass({
 });
 
 },{"../microEvent":18,"../stores/UserStore":19,"./Authorisation":10,"react":237}],12:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _react2.default.createClass({
-	displayName: 'Login',
-
-
-	componentDidMount: function componentDidMount() {
-
-		var fields = $('#logIn-login, #logIn-password'),
-		    error_message = $('p');
-
-		fields.on('change', function () {
-
-			error_message.hide();
-		});
-	},
-
-	_submitLogIn: function _submitLogIn(e) {
-
-		e.preventDefault();
-		var login = this.refs.login.value,
-		    password = this.refs.password.value;
-
-		if (this.props.logIn) {
-
-			this.props.logIn({
-
-				user_login: login,
-				user_password: password
-			});
-		}
-
-		$('#logIn-login, #logIn-password').val('').blur();
-	},
-
-	render: function render() {
-
-		return _react2.default.createElement(
-			'form',
-			{ className: 'app__auth-login-form', onSubmit: this._submitLogIn },
-			_react2.default.createElement(
-				'h4',
-				null,
-				'Вхід'
-			),
-			_react2.default.createElement(
-				'div',
-				{ className: 'input-field' },
-				_react2.default.createElement('input', { ref: 'login', id: 'logIn-login', type: 'text', required: true }),
-				_react2.default.createElement(
-					'label',
-					{ htmlFor: 'logIn-login' },
-					'Логін'
-				)
-			),
-			_react2.default.createElement(
-				'div',
-				{ className: 'input-field' },
-				_react2.default.createElement('input', { ref: 'password', id: 'logIn-password', type: 'password', required: true }),
-				_react2.default.createElement(
-					'label',
-					{ htmlFor: 'logIn-password' },
-					'Пароль'
-				)
-			),
-			_react2.default.createElement(
-				'button',
-				{ className: 'waves-effect waves-light btn app__auth-login-submit', type: 'submit' },
-				'Увійти!'
-			)
-		);
-	}
-});
-
-},{"react":237}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -499,15 +414,15 @@ exports.default = _react2.default.createClass({
 		}
 	},
 
-	_changePayment: function _changePayment(e) {
+	// _changePayment: function(e) {
 
-		var elem = $(e.target);
+	// 	let elem = $(e.target);
 
-		if (this.props.index) {
+	// 	if (this.props.index) {
 
-			this.props.index(elem);
-		}
-	},
+	// 		this.props.index(elem);
+	// 	}
+	// },
 
 	render: function render() {
 
@@ -569,7 +484,7 @@ exports.default = _react2.default.createClass({
 								),
 								_react2.default.createElement(
 									"a",
-									{ onClick: this._changePayment, className: "waves-effect waves-light btn app__user-payment-actions-edit" },
+									{ className: "waves-effect waves-light btn app__user-payment-actions-edit" },
 									"Редагувати"
 								),
 								_react2.default.createElement(
@@ -586,7 +501,7 @@ exports.default = _react2.default.createClass({
 	}
 });
 
-},{"react":237}],14:[function(require,module,exports){
+},{"react":237}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -641,7 +556,6 @@ var Payment = function Payment(options) {
 
 		color = '#' + first_sign + second_sign;
 		color += '' + third_sign + fourth_sign + fifth_sign + sixth_sign;
-		console.log(color);
 		return color;
 	}();
 	this.user_address = null;
@@ -651,13 +565,13 @@ exports.default = _react2.default.createClass({
 	displayName: 'UserInterface',
 
 
-	getInitialState: function getInitialState() {
+	// getInitialState: function() {
 
-		return {
+	// 	return {
 
-			payment_index: null
-		};
-	},
+	// 		payment_index: null
+	// 	}
+	// },
 
 	//componentDidMount needs refactoring
 	//too big function
@@ -708,7 +622,6 @@ exports.default = _react2.default.createClass({
 		});
 
 		$change_payment_info_btn.on('click', function () {
-			console.log('Clicked change');
 			$change_payment_info_modal.fadeIn('slow');
 			$('html, body').on('touchmove scroll mousewheel', function () {
 
@@ -789,8 +702,6 @@ exports.default = _react2.default.createClass({
 			payment_name: name,
 			payment_account: account
 		});
-		console.log('added next');
-		console.log(new_payment);
 		(0, _AddPaymentAction2.default)(new_payment);
 	},
 
@@ -819,32 +730,32 @@ exports.default = _react2.default.createClass({
 		(0, _ChangeUserInfoAction2.default)(changes);
 	},
 
-	_getPaymentIndex: function _getPaymentIndex(elem) {
+	// _getPaymentIndex: function(elem) {
 
-		var $payment_item = elem.parents('.app__user-payment'),
-		    $payment_index = $payment_item.index();
+	// 	let $payment_item  = elem.parents('.app__user-payment'),
+	// 			$payment_index = $payment_item.index();
 
-		this.setState({
+	// 	this.setState({
 
-			payment_index: $payment_index
-		});
-	},
+	// 		payment_index: $payment_index
+	// 	});
+	// },
 
-	_changePaymentInfo: function _changePaymentInfo(e) {
+	// _changePaymentInfo: function(e) {
 
-		e.preventDefault();
+	// 	e.preventDefault();
 
-		var payment_name = this.refs.payment_change_name.value,
-		    payment_account = this.refs.payment_change_account.value,
-		    payment_index = this.state.payment_index;
+	// 	let payment_name 	  = this.refs.payment_change_name.value,
+	// 			payment_account = this.refs.payment_change_account.value,
+	// 			payment_index   = this.state.payment_index;
 
-		(0, _ChangePaymentInfoAction2.default)({
+	// 	ChangePaymentInfoAction({
 
-			name: payment_name,
-			account: payment_account,
-			index: payment_index
-		});
-	},
+	// 		name: payment_name,
+	// 		account: payment_account,
+	// 		index: payment_index
+	// 	});
+	// },
 
 	_logOut: function _logOut() {
 
@@ -1286,7 +1197,7 @@ exports.default = _react2.default.createClass({
 	}
 });
 
-},{"../actions/AddPaymentAction":1,"../actions/ChangePaymentInfoAction":2,"../actions/ChangeUserInfoAction":3,"../actions/LogOutAction":5,"../actions/RemovePaymentAction":6,"../components/SinglePayment":13,"react":237}],15:[function(require,module,exports){
+},{"../actions/AddPaymentAction":1,"../actions/ChangePaymentInfoAction":2,"../actions/ChangeUserInfoAction":3,"../actions/LogOutAction":5,"../actions/RemovePaymentAction":6,"../components/SinglePayment":12,"react":237}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1297,54 +1208,136 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _UserInterface = require('../components/UserInterface');
+var _microEvent = require('../microEvent');
 
-var _UserInterface2 = _interopRequireDefault(_UserInterface);
+var _microEvent2 = _interopRequireDefault(_microEvent);
 
 var _UserStore = require('../stores/UserStore');
 
 var _UserStore2 = _interopRequireDefault(_UserStore);
 
-var _microEvent = require('../microEvent');
+var _UserInterface = require('../components/UserInterface');
 
-var _microEvent2 = _interopRequireDefault(_microEvent);
+var _UserInterface2 = _interopRequireDefault(_UserInterface);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _react2.default.createClass({
 	displayName: 'UserInterfaceController',
+	getInitialState: function getInitialState() {
 
+		return {
 
+			user: _UserStore2.default.returnUserInfo()
+		};
+	},
+	_storeUpdate: function _storeUpdate() {
+
+		this.setState({
+
+			user: _UserStore2.default.returnUserInfo()
+		});
+	},
 	componentDidMount: function componentDidMount() {
 
 		_UserStore2.default.bind('update', this._storeUpdate);
 	},
+	componentWillUnmount: function componentWillUnmount() {
 
-	_storeUpdate: function _storeUpdate() {
-
-		var current_user = _UserStore2.default.returnUserInfo();
-		this.setState({
-
-			user: current_user
-		});
+		_UserStore2.default.unbind('update', this._storeUpdate);
 	},
-
-	componentWillMount: function componentWillMount() {
-
-		var current_user = _UserStore2.default.returnUserInfo();
-		this.setState({
-
-			user: current_user
-		});
-	},
-
 	render: function render() {
 
 		return _react2.default.createElement(_UserInterface2.default, { user_info: this.state.user });
 	}
 });
 
-},{"../components/UserInterface":14,"../microEvent":18,"../stores/UserStore":19,"react":237}],16:[function(require,module,exports){
+},{"../components/UserInterface":13,"../microEvent":18,"../stores/UserStore":19,"react":237}],15:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _react2.default.createClass({
+	displayName: 'logIn',
+
+
+	componentDidMount: function componentDidMount() {
+
+		var fields = $('#logIn-login, #logIn-password'),
+		    error_message = $('p');
+
+		fields.on('change', function () {
+
+			error_message.hide();
+		});
+	},
+
+	_submitLogIn: function _submitLogIn(e) {
+
+		e.preventDefault();
+		var login = this.refs.login.value,
+		    password = this.refs.password.value;
+
+		if (this.props.logIn) {
+
+			this.props.logIn({
+
+				user_login: login,
+				user_password: password
+			});
+		}
+
+		$('#logIn-login, #logIn-password').val('').blur();
+	},
+
+	render: function render() {
+
+		return _react2.default.createElement(
+			'form',
+			{ className: 'app__auth-login-form', onSubmit: this._submitLogIn },
+			_react2.default.createElement(
+				'h4',
+				null,
+				'Вхід'
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'input-field' },
+				_react2.default.createElement('input', { ref: 'login', id: 'logIn-login', type: 'text', required: true }),
+				_react2.default.createElement(
+					'label',
+					{ htmlFor: 'logIn-login' },
+					'Логін'
+				)
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: 'input-field' },
+				_react2.default.createElement('input', { ref: 'password', id: 'logIn-password', type: 'password', required: true }),
+				_react2.default.createElement(
+					'label',
+					{ htmlFor: 'logIn-password' },
+					'Пароль'
+				)
+			),
+			_react2.default.createElement(
+				'button',
+				{ className: 'waves-effect waves-light btn app__auth-login-submit', type: 'submit' },
+				'Увійти!'
+			)
+		);
+	}
+});
+
+},{"react":237}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

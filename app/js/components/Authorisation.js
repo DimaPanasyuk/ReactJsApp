@@ -1,5 +1,5 @@
-import React 				from 'react';
-import LogIn        from './Login';
+import React 	    from 'react';
+import LogIn        from './logIn';
 import SignUp       from './signUp';
 import LogInAction  from '../actions/LogInAction';
 import SignUpAction from '../actions/SignUpAction';
