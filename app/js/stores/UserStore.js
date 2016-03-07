@@ -108,11 +108,11 @@ UserStore.dispatch = AppDispatcher.register(function(action) {
 
 	case 'CHANGE_USERINFO':
 	
-		let u_user 						= UserStore.current_user;
+		let u_user 				    = UserStore.current_user;
 				u_user.email   		= action.value.email || u_user.email;
 				u_user.address 		= action.value.address || u_user.address;
-				u_user.number  		= (action.value.phone.length === 10) ? action.value.length : u_user.number,
-				u_user.background = action.value.background || u_user.background;
+				u_user.number  		= (action.value.phone.length >= 10) ? action.value.phone : u_user.number,
+				u_user.background = (action.value.background.length > 2) ? action.value.background : u_user.background;
 
 		Materialize.toast('Інформація про користувача оновлена', 3000);
 		UserStore.trigger('update');
