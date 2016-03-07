@@ -6,7 +6,7 @@ import SignUpAction from '../actions/SignUpAction';
 
 export default React.createClass({
 
-	componentDidMount: function() {
+	componentDidMount() {
 
 		let $login_btn   = $('.app__auth-login'),
 				$signup_btn  = $('.app__auth-signup'),
@@ -30,17 +30,17 @@ export default React.createClass({
 
 	},
 
-	_handleLogIn: function(user_data) {
+	_handleLogIn(user_data) {
 
 		LogInAction(user_data);
 	},
 
-	_handleSignUp: function(new_user) {
+	_handleSignUp(new_user) {
 
 		SignUpAction(new_user);
 	},
 
-	render: function() {
+	render() {
 		
 		return (
 

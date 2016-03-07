@@ -17,15 +17,15 @@ let User = function(options) {
 
 export default React.createClass({
 
-	componentDidMount: function() {
+	componentDidMount() {
 
 		$('select').material_select();
 	},
 
-	_submitSignUp: function(e) {
+	_submitSignUp(e) {
 		
-		let refs 					= this.refs,
-				new_user;
+		let refs = this.refs,
+				   new_user;
 
 		e.preventDefault();
 
@@ -41,8 +41,6 @@ export default React.createClass({
 			background: refs.background.value			
 		});
 
-		console.log(new_user.background);
-
 		if (this.props.signUp) {
 
 			this.props.signUp(new_user);
@@ -51,7 +49,7 @@ export default React.createClass({
 		$('input').val('');
 	},
 
-	render: function() {
+	render() {
 
 		return (
 

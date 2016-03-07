@@ -213,8 +213,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _react2.default.createClass({
 	displayName: "App",
-
-
 	render: function render() {
 
 		return _react2.default.createElement(
@@ -256,8 +254,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _react2.default.createClass({
 	displayName: 'Authorisation',
-
-
 	componentDidMount: function componentDidMount() {
 
 		var $login_btn = $('.app__auth-login'),
@@ -278,17 +274,14 @@ exports.default = _react2.default.createClass({
 			$login_form.fadeIn('slow');
 		});
 	},
-
 	_handleLogIn: function _handleLogIn(user_data) {
 
 		(0, _LogInAction2.default)(user_data);
 	},
-
 	_handleSignUp: function _handleSignUp(new_user) {
 
 		(0, _SignUpAction2.default)(new_user);
 	},
-
 	render: function render() {
 
 		return _react2.default.createElement(
@@ -402,8 +395,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _react2.default.createClass({
 	displayName: "SinglePayment",
-
-
 	_removePayment: function _removePayment(e) {
 
 		var elem = $(e.target);
@@ -413,17 +404,6 @@ exports.default = _react2.default.createClass({
 			this.props.remove(elem);
 		}
 	},
-
-	// _changePayment: function(e) {
-
-	// 	let elem = $(e.target);
-
-	// 	if (this.props.index) {
-
-	// 		this.props.index(elem);
-	// 	}
-	// },
-
 	render: function render() {
 
 		return _react2.default.createElement(
@@ -481,11 +461,6 @@ exports.default = _react2.default.createClass({
 									"a",
 									{ onClick: this._removePayment, className: "waves-effect waves-light btn app__user-payment-actions-remove" },
 									"Видалити"
-								),
-								_react2.default.createElement(
-									"a",
-									{ className: "waves-effect waves-light btn app__user-payment-actions-edit" },
-									"Редагувати"
 								),
 								_react2.default.createElement(
 									"a",
@@ -563,15 +538,14 @@ var Payment = function Payment(options) {
 
 exports.default = _react2.default.createClass({
 	displayName: 'UserInterface',
+	getInitialState: function getInitialState() {
 
+		return {
 
-	// getInitialState: function() {
+			payment_index: null
+		};
+	},
 
-	// 	return {
-
-	// 		payment_index: null
-	// 	}
-	// },
 
 	//componentDidMount needs refactoring
 	//too big function
@@ -587,11 +561,6 @@ exports.default = _react2.default.createClass({
 		    $change_user_info_form = $('.app__user-change-user-info-form'),
 		    $change_user_info_inputs = $change_user_info_form.find('input'),
 		    $cancel_user_info_change = $('.cancel-user-info-change'),
-		    $change_payment_info_btn = $('.app__user-payment-actions-edit'),
-		    $change_payment_info_modal = $('.app__user-change-payment-info-modal'),
-		    $change_payment_info_form = $('.app__user-change-payment-info-form'),
-		    $change_payment_info_inputs = $change_payment_info_form.find('input'),
-		    $cancel_payment_info_change = $('.cancel-payment-info-change'),
 		    $header_logo_user_name = $('.app__user-header-top-line-content h3'),
 		    $window = $(window);
 
@@ -621,14 +590,6 @@ exports.default = _react2.default.createClass({
 			});
 		});
 
-		$change_payment_info_btn.on('click', function () {
-			$change_payment_info_modal.fadeIn('slow');
-			$('html, body').on('touchmove scroll mousewheel', function () {
-
-				return false;
-			});
-		});
-
 		//Modals form submition cancel
 		$cancel_payment.on('click', function () {
 
@@ -642,13 +603,6 @@ exports.default = _react2.default.createClass({
 			$change_user_info_modal.fadeOut('fast');
 			$change_user_info_inputs.val('').blur();
 			$('select').val('');
-			$('html, body').off('touchmove scroll mousewheel');
-		});
-
-		$cancel_payment_info_change.on('click', function () {
-
-			$change_payment_info_modal.fadeOut('fast');
-			$change_payment_info_inputs.val('').blur();
 			$('html, body').off('touchmove scroll mousewheel');
 		});
 
@@ -671,14 +625,6 @@ exports.default = _react2.default.createClass({
 			return false;
 		});
 
-		$change_payment_info_form.on('submit', function () {
-
-			$change_payment_info_modal.fadeOut('fast');
-			$change_payment_info_inputs.val('').blur();
-			$('html, body').off('touchmove scroll mousewheel');
-			return false;
-		});
-
 		$window.on('scroll', function () {
 
 			var st = $window.scrollTop();
@@ -690,7 +636,6 @@ exports.default = _react2.default.createClass({
 			});
 		});
 	},
-
 	_addPayment: function _addPayment(e) {
 
 		e.preventDefault();
@@ -704,13 +649,11 @@ exports.default = _react2.default.createClass({
 		});
 		(0, _AddPaymentAction2.default)(new_payment);
 	},
-
 	_deletePayment: function _deletePayment(elem) {
 
 		var $payment_item = elem.parents('.app__user-payment');
 		(0, _RemovePaymentAction2.default)($payment_item.index());
 	},
-
 	_changeUserInfo: function _changeUserInfo(e) {
 
 		e.preventDefault();
@@ -729,39 +672,10 @@ exports.default = _react2.default.createClass({
 
 		(0, _ChangeUserInfoAction2.default)(changes);
 	},
-
-	// _getPaymentIndex: function(elem) {
-
-	// 	let $payment_item  = elem.parents('.app__user-payment'),
-	// 			$payment_index = $payment_item.index();
-
-	// 	this.setState({
-
-	// 		payment_index: $payment_index
-	// 	});
-	// },
-
-	// _changePaymentInfo: function(e) {
-
-	// 	e.preventDefault();
-
-	// 	let payment_name 	  = this.refs.payment_change_name.value,
-	// 			payment_account = this.refs.payment_change_account.value,
-	// 			payment_index   = this.state.payment_index;
-
-	// 	ChangePaymentInfoAction({
-
-	// 		name: payment_name,
-	// 		account: payment_account,
-	// 		index: payment_index
-	// 	});
-	// },
-
 	_logOut: function _logOut() {
 
 		(0, _LogOutAction2.default)();
 	},
-
 	render: function render() {
 
 		var payments = void 0,
@@ -1267,8 +1181,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _react2.default.createClass({
 	displayName: 'logIn',
-
-
 	componentDidMount: function componentDidMount() {
 
 		var fields = $('#logIn-login, #logIn-password'),
@@ -1279,7 +1191,6 @@ exports.default = _react2.default.createClass({
 			error_message.hide();
 		});
 	},
-
 	_submitLogIn: function _submitLogIn(e) {
 
 		e.preventDefault();
@@ -1297,7 +1208,6 @@ exports.default = _react2.default.createClass({
 
 		$('#logIn-login, #logIn-password').val('').blur();
 	},
-
 	render: function render() {
 
 		return _react2.default.createElement(
@@ -1366,13 +1276,10 @@ var User = function User(options) {
 
 exports.default = _react2.default.createClass({
 	displayName: "signUp",
-
-
 	componentDidMount: function componentDidMount() {
 
 		$('select').material_select();
 	},
-
 	_submitSignUp: function _submitSignUp(e) {
 
 		var refs = this.refs,
@@ -1392,8 +1299,6 @@ exports.default = _react2.default.createClass({
 			background: refs.background.value
 		});
 
-		console.log(new_user.background);
-
 		if (this.props.signUp) {
 
 			this.props.signUp(new_user);
@@ -1401,7 +1306,6 @@ exports.default = _react2.default.createClass({
 
 		$('input').val('');
 	},
-
 	render: function render() {
 
 		return _react2.default.createElement(
@@ -1661,6 +1565,7 @@ UserStore = {
 
 		return this.current_user;
 	},
+
 
 	//Returns valid_login and password
 	//as array of values

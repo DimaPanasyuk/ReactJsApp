@@ -3,7 +3,7 @@ import React from 'react';
 
 export default React.createClass({
 	
-	componentDidMount: function() {
+	componentDidMount() {
 
 		let fields = $('#logIn-login, #logIn-password'),
 				error_message = $('p');
@@ -15,7 +15,7 @@ export default React.createClass({
 		});
 	},
 
-	_submitLogIn: function(e) {
+	_submitLogIn(e) {
 
 		e.preventDefault();
 		let login    = this.refs.login.value,
@@ -35,7 +35,7 @@ export default React.createClass({
 		.blur();	
 	},
 
-	render: function() {
+	render() {
 
 		return (
 

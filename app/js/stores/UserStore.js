@@ -41,20 +41,20 @@ UserStore = {
 	
 	//Returns current user's
 	//information object
-	returnUserInfo: function() {
+	returnUserInfo() {
 
 		return this.current_user;
 	},
 	
 	//Returns valid_login and password
 	//as array of values
-	returnValidStatus: function() {
+	returnValidStatus() {
 
 		return this.valid_login_info;
 	}
 };
 
-UserStore.dispatch = AppDispatcher.register(function(action) {
+UserStore.dispatch = AppDispatcher.register(action => {
 
 	switch (action.event) {
 	case 'USER_LOGIN':

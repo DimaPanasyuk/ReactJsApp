@@ -2,7 +2,7 @@ import React 			 from 'react';
 
 export default React.createClass({
 		
-	_removePayment: function(e) {
+	_removePayment(e) {
 		
 		let elem = $(e.target);
 
@@ -12,17 +12,7 @@ export default React.createClass({
 		}
 	},
 
-	// _changePayment: function(e) {
-		
-	// 	let elem = $(e.target);
-
-	// 	if (this.props.index) {
-
-	// 		this.props.index(elem);
-	// 	}
-	// },
-
-	render: function() {	
+	render() {	
 
 		return (
 
@@ -53,7 +43,6 @@ export default React.createClass({
 							<div className="col-md-3">
 								<div className="app__user-payment-actions">
 									<a onClick={this._removePayment} className="waves-effect waves-light btn app__user-payment-actions-remove">Видалити</a>
-									<a className="waves-effect waves-light btn app__user-payment-actions-edit">Редагувати</a>
 									<a className="waves-effect waves-light btn app__user-payment-actions-pay disabled">Оплатити</a>
 								</div>
 							</div>

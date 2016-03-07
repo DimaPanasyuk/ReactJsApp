@@ -34,17 +34,17 @@ let	Payment = function(options) {
 
 export default React.createClass({
 		
-	// getInitialState: function() {
+	getInitialState() {
 
-	// 	return {
+		return {
 
-	// 		payment_index: null
-	// 	}
-	// },
+			payment_index: null
+		}
+	},
 
 	//componentDidMount needs refactoring
 	//too big function
-	componentDidMount: function() {
+	componentDidMount() {
 
 		let $add_payment_btn    	     = $('.app__user-add-payment-btn'),
 				$add_payment_modal  	     = $('.app__user-add-new-payment-modal'),
@@ -57,12 +57,6 @@ export default React.createClass({
 				$change_user_info_form     = $('.app__user-change-user-info-form'),
 				$change_user_info_inputs   = $change_user_info_form.find('input'),
 				$cancel_user_info_change   = $('.cancel-user-info-change'),
-
-				$change_payment_info_btn    = $('.app__user-payment-actions-edit'),
-				$change_payment_info_modal  = $('.app__user-change-payment-info-modal'),
-				$change_payment_info_form   = $('.app__user-change-payment-info-form'),
-				$change_payment_info_inputs = $change_payment_info_form.find('input'),
-				$cancel_payment_info_change = $('.cancel-payment-info-change'), 
 
 				$header_logo_user_name     = $('.app__user-header-top-line-content h3'),
 				$window 							     = $(window);
@@ -99,17 +93,6 @@ export default React.createClass({
 			});
 		});
 
-		$change_payment_info_btn
-		.on('click', function() {
-			$change_payment_info_modal.fadeIn('slow');
-			$('html, body')
-			.on('touchmove scroll mousewheel', function() {
-
-				return false;
-			});
-		});
-
-
 		//Modals form submition cancel
 		$cancel_payment
 		.on('click', function() {
@@ -129,16 +112,6 @@ export default React.createClass({
 			$('html, body')
 			.off('touchmove scroll mousewheel');
 		});
-
-		$cancel_payment_info_change
-		.on('click', function() {
-
-			$change_payment_info_modal.fadeOut('fast');
-			$change_payment_info_inputs.val('').blur();
-			$('html, body')
-			.off('touchmove scroll mousewheel');
-		});
-
 
 		//Modals form submition
 		$add_payment_form
@@ -163,16 +136,6 @@ export default React.createClass({
 			return false;
 		});
 
-		$change_payment_info_form
-		.on('submit', function() {
-
-			$change_payment_info_modal.fadeOut('fast');
-			$change_payment_info_inputs.val('').blur();
-			$('html, body')
-			.off('touchmove scroll mousewheel');
-			return false;
-		});
-
 		$window
 		.on('scroll', function() {
 			
@@ -186,7 +149,7 @@ export default React.createClass({
 		});
 	},
 
-	_addPayment: function(e) {
+	_addPayment(e) {
 
 		e.preventDefault();
 		
@@ -200,13 +163,13 @@ export default React.createClass({
 		AddPaymentAction(new_payment);
 	},
 
-	_deletePayment: function(elem) {
+	_deletePayment(elem) {
 
 		let $payment_item = elem.parents('.app__user-payment');
 		RemovePaymentAction($payment_item.index());
 	},
 	
-	_changeUserInfo: function(e) {
+	_changeUserInfo(e) {
 	
 		e.preventDefault();
 
@@ -225,39 +188,12 @@ export default React.createClass({
 		ChangeUserInfoAction(changes);
 	},
 	
-	// _getPaymentIndex: function(elem) {
-
-	// 	let $payment_item  = elem.parents('.app__user-payment'),
-	// 			$payment_index = $payment_item.index();
-
-	// 	this.setState({
-
-	// 		payment_index: $payment_index
-	// 	});
-	// },
-
-	// _changePaymentInfo: function(e) {
-
-	// 	e.preventDefault();
-
-	// 	let payment_name 	  = this.refs.payment_change_name.value,
-	// 			payment_account = this.refs.payment_change_account.value,
-	// 			payment_index   = this.state.payment_index;
-
-	// 	ChangePaymentInfoAction({
-
-	// 		name: payment_name,
-	// 		account: payment_account,
-	// 		index: payment_index
-	// 	});
-	// },
-
-	_logOut: function() {
+	_logOut() {
 
 		LogOutAction();
 	},
 
-	render: function() {
+	render() {
 		
 
 		let payments,
