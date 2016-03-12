@@ -163,10 +163,9 @@ export default React.createClass({
 		AddPaymentAction(new_payment);
 	},
 
-	_deletePayment(elem) {
+	_deletePayment(elem_name) {
 
-		let $payment_item = elem.parents('.app__user-payment');
-		RemovePaymentAction($payment_item.index());
+		RemovePaymentAction(elem_name);
 	},
 	
 	_changeUserInfo(e) {
@@ -209,8 +208,8 @@ export default React.createClass({
 				return (
 					
 					<SinglePayment remove={_this._deletePayment} 
-								   key={i} 
-								   payment={payment}/>
+											   key={i} 
+											   payment={payment}/>
 				)
 			});
 		};

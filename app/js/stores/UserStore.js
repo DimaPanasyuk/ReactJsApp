@@ -1,16 +1,9 @@
 
-//Method to delete array element by index
-Array.prototype.remove = function(from, to) {
-  
-  var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from < 0 ? this.length + from : from;
-  
-  return this.push.apply(this, rest);
-};
-
 import AppDispatcher     from '../dispatcher/AppDispatcher';
 import MicroEvent        from '../microEvent';
-import { browserHistory   } from 'react-router';
+import { hashHistory   } from 'react-router';
+import _ 								 from 'lodash';
+
 
 let UserStore;
 
@@ -73,7 +66,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 				Materialize.toast(`Виконано вхід у акаунт ${login}`, 4000);
 
 				UserStore.trigger('update');
-				browserHistory.push('/userInterface');
+				hashHistory.push('/userInterface');
 				break;
 
 			} else {
@@ -91,7 +84,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 
 	case 'USER_LOGOUT': 
 		
-		browserHistory.push('/');
+		hashHistory.push('/');
 		UserStore.current_user = {};
 		Materialize.toast('Виконано вихід з акаунту', 3000);
 		UserStore.trigger('update');
@@ -103,7 +96,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 		UserStore.trigger('update');
 		Materialize.toast(`Виконано вхід у акаунт \n
 											 під логіном ${action.value.login}`, 4000);
-		browserHistory.push('/userInterface');
+		hashHistory.push('/userInterface');
 		break;
 
 	case 'CHANGE_USERINFO':
@@ -128,8 +121,10 @@ UserStore.dispatch = AppDispatcher.register(action => {
 	
 	case 'REMOVE_PAYMENT':
 		
-		let index = action.value;
-		UserStore.current_user.payments.remove(index);
+		let payments     = UserStore.current_user.payments;
+
+		
+		_.remove(payments, {payment_name: action.value});
 		Materialize.toast('Комунальний платіж видалено', 3000);
 		UserStore.trigger('update');
 		break;

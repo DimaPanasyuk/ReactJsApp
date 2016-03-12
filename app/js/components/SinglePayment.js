@@ -1,14 +1,15 @@
-import React 			 from 'react';
+import React 	from 'react';
+
 
 export default React.createClass({
 		
 	_removePayment(e) {
 		
-		let elem = $(e.target);
+		let payment_name = this.props.payment.payment_name;
 
 		if (this.props.remove) {
 
-			this.props.remove(elem);
+			this.props.remove(payment_name);
 		}
 	},
 
