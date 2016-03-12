@@ -372,75 +372,80 @@ export default React.createClass({
 					</div>
 				</header>
 
-				<section className="app__user-about">
+				<section className="app__user-body">
 					
-					<div className="container">
-						
+					<div className="container-fluid">
+					
 						<div className="row">
-							
-							<div className="col-md-12">
-								
-								<div className="app__user-about-content">
+					
+							<div className="col-md-4">
 									
-									<ul className="app__user-about-details">
+								<section className="app__user-about">
+					
+										<div className="row">
+											
+											<div className="col-md-12">
+												
+												<div className="app__user-about-content">
+													
+													<ul className="app__user-about-details">
+														
+														<li>
+															<b>Ваша електронна адреса:</b> {this.props.user_info.email}
+														</li>
+														<li>
+															<b>Ваша адреса:</b> {this.props.user_info.address}
+														</li>
+														<li>
+															<b>Ваш номер телефону:</b> {this.props.user_info.number}
+														</li>
+														<li>
+															<b>Вибраний фон: </b>
+															<img className="profile-img-small" src={this.props.user_info.background} alt="Background"/>
+														</li>		
+													</ul>
+													
+													<button className="waves-effect waves-light btn app__user-about-change">
+														Змінити свої дані
+													</button>
+												</div>
+											</div>
+										</div>
+								</section>								
+							</div>
+							<div className="col-md-8">
+
+								<section className="app__user-payments">
 										
-										<li>
-											<b>Ваша електронна адреса:</b> {this.props.user_info.email}
-										</li>
-										<li>
-											<b>Ваша адреса:</b> {this.props.user_info.address}
-										</li>
-										<li>
-											<b>Ваш номер телефону:</b> {this.props.user_info.number}
-										</li>
-										<li>
-											<b>Вибраний фон: </b>
-											<img className="profile-img-small" src={this.props.user_info.background} alt="Background"/>
-										</li>		
-									</ul>
-									
-									<button className="waves-effect waves-light btn app__user-about-change">
-										Редагувати
-									</button>
-								</div>
+										<div className="row">
+											
+											<div className="col-md-12">
+												
+												<div className="app__user-payments-list">
+
+													{payments}
+												</div>
+											</div>
+										</div>
+								</section>
+
+								<section className="app__user-add-new-payments">
+
+										<div className="row">
+											
+											<div className="col-md-12">
+												
+												<div className="app__user-add-payment">
+													
+													<a className="waves-effect waves-teal btn-flat app__user-add-payment-btn">Додати новий платіж</a>
+												</div>
+											</div>
+										</div>
+								</section>
 							</div>
 						</div>
 					</div>
-				</section>
-
-				<section className="app__user-add-new-payments">
-					
-					<div className="container">
-
-						<div className="row">
-							
-							<div className="col-md-12">
-								
-								<div className="app__user-add-payment">
-									
-									<a className="waves-effect waves-teal btn-flat app__user-add-payment-btn">Додати новий платіж</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section className="app__user-payments">
-					
-					<div className="container">
-						
-						<div className="row">
-							
-							<div className="col-md-12">
-								
-								<div className="app__user-payments-list">
-
-									{payments}
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+				</section>	
 			</div>
 		)
 	}

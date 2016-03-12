@@ -8,7 +8,7 @@ import {
 
 	Router, 
 	Route, 
-	hashHistory, 
+	browserHistory, 
 	IndexRoute 
 } from 'react-router'		
 
@@ -16,7 +16,7 @@ import {
 
 ReactDOM.render((
 	
-	<Router history={hashHistory}>
+	<Router history={browserHistory}>
 		
 		<Route path='/' component={App}>
 			

@@ -193,7 +193,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _reactDom2.default.render(_react2.default.createElement(
 	_reactRouter.Router,
-	{ history: _reactRouter.hashHistory },
+	{ history: _reactRouter.browserHistory },
 	_react2.default.createElement(
 		_reactRouter.Route,
 		{ path: '/', component: _App2.default },
@@ -1036,117 +1036,125 @@ exports.default = _react2.default.createClass({
 			),
 			_react2.default.createElement(
 				'section',
-				{ className: 'app__user-about' },
+				{ className: 'app__user-body' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'container' },
+					{ className: 'container-fluid' },
 					_react2.default.createElement(
 						'div',
 						{ className: 'row' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-md-12' },
+							{ className: 'col-md-4' },
 							_react2.default.createElement(
-								'div',
-								{ className: 'app__user-about-content' },
+								'section',
+								{ className: 'app__user-about' },
 								_react2.default.createElement(
-									'ul',
-									{ className: 'app__user-about-details' },
+									'div',
+									{ className: 'row' },
 									_react2.default.createElement(
-										'li',
-										null,
+										'div',
+										{ className: 'col-md-12' },
 										_react2.default.createElement(
-											'b',
-											null,
-											'Ваша електронна адреса:'
-										),
-										' ',
-										this.props.user_info.email
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'b',
-											null,
-											'Ваша адреса:'
-										),
-										' ',
-										this.props.user_info.address
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'b',
-											null,
-											'Ваш номер телефону:'
-										),
-										' ',
-										this.props.user_info.number
-									),
-									_react2.default.createElement(
-										'li',
-										null,
-										_react2.default.createElement(
-											'b',
-											null,
-											'Вибраний фон: '
-										),
-										_react2.default.createElement('img', { className: 'profile-img-small', src: this.props.user_info.background, alt: 'Background' })
+											'div',
+											{ className: 'app__user-about-content' },
+											_react2.default.createElement(
+												'ul',
+												{ className: 'app__user-about-details' },
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'b',
+														null,
+														'Ваша електронна адреса:'
+													),
+													' ',
+													this.props.user_info.email
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'b',
+														null,
+														'Ваша адреса:'
+													),
+													' ',
+													this.props.user_info.address
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'b',
+														null,
+														'Ваш номер телефону:'
+													),
+													' ',
+													this.props.user_info.number
+												),
+												_react2.default.createElement(
+													'li',
+													null,
+													_react2.default.createElement(
+														'b',
+														null,
+														'Вибраний фон: '
+													),
+													_react2.default.createElement('img', { className: 'profile-img-small', src: this.props.user_info.background, alt: 'Background' })
+												)
+											),
+											_react2.default.createElement(
+												'button',
+												{ className: 'waves-effect waves-light btn app__user-about-change' },
+												'Змінити свої дані'
+											)
+										)
 									)
-								),
-								_react2.default.createElement(
-									'button',
-									{ className: 'waves-effect waves-light btn app__user-about-change' },
-									'Редагувати'
 								)
 							)
-						)
-					)
-				)
-			),
-			_react2.default.createElement(
-				'section',
-				{ className: 'app__user-add-new-payments' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'container' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'row' },
+						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-md-12' },
+							{ className: 'col-md-8' },
 							_react2.default.createElement(
-								'div',
-								{ className: 'app__user-add-payment' },
+								'section',
+								{ className: 'app__user-payments' },
 								_react2.default.createElement(
-									'a',
-									{ className: 'waves-effect waves-teal btn-flat app__user-add-payment-btn' },
-									'Додати новий платіж'
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-12' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'app__user-payments-list' },
+											payments
+										)
+									)
 								)
-							)
-						)
-					)
-				)
-			),
-			_react2.default.createElement(
-				'section',
-				{ className: 'app__user-payments' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'container' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'row' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'col-md-12' },
+							),
 							_react2.default.createElement(
-								'div',
-								{ className: 'app__user-payments-list' },
-								payments
+								'section',
+								{ className: 'app__user-add-new-payments' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-md-12' },
+										_react2.default.createElement(
+											'div',
+											{ className: 'app__user-add-payment' },
+											_react2.default.createElement(
+												'a',
+												{ className: 'waves-effect waves-teal btn-flat app__user-add-payment-btn' },
+												'Додати новий платіж'
+											)
+										)
+									)
+								)
 							)
 						)
 					)
@@ -1634,7 +1642,7 @@ UserStore.dispatch = _AppDispatcher2.default.register(function (action) {
 					Materialize.toast('Виконано вхід у акаунт ' + login, 4000);
 
 					UserStore.trigger('update');
-					_reactRouter.hashHistory.push('/userInterface');
+					_reactRouter.browserHistory.push('/userInterface');
 					break;
 				} else {
 
@@ -1651,7 +1659,7 @@ UserStore.dispatch = _AppDispatcher2.default.register(function (action) {
 
 		case 'USER_LOGOUT':
 
-			_reactRouter.hashHistory.push('/');
+			_reactRouter.browserHistory.push('/');
 			UserStore.current_user = {};
 			Materialize.toast('Виконано вихід з акаунту', 3000);
 			UserStore.trigger('update');
@@ -1662,7 +1670,7 @@ UserStore.dispatch = _AppDispatcher2.default.register(function (action) {
 			UserStore.current_user = action.value;
 			UserStore.trigger('update');
 			Materialize.toast('Виконано вхід у акаунт \n\n\t\t\t\t\t\t\t\t\t\t\t під логіном ' + action.value.login, 4000);
-			_reactRouter.hashHistory.push('/userInterface');
+			_reactRouter.browserHistory.push('/userInterface');
 			break;
 
 		case 'CHANGE_USERINFO':

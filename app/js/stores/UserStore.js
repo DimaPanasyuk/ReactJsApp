@@ -1,7 +1,7 @@
 
 import AppDispatcher     from '../dispatcher/AppDispatcher';
 import MicroEvent        from '../microEvent';
-import { hashHistory   } from 'react-router';
+import { browserHistory   } from 'react-router';
 import _ 								 from 'lodash';
 
 
@@ -66,7 +66,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 				Materialize.toast(`Виконано вхід у акаунт ${login}`, 4000);
 
 				UserStore.trigger('update');
-				hashHistory.push('/userInterface');
+				browserHistory.push('/userInterface');
 				break;
 
 			} else {
@@ -84,7 +84,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 
 	case 'USER_LOGOUT': 
 		
-		hashHistory.push('/');
+		browserHistory.push('/');
 		UserStore.current_user = {};
 		Materialize.toast('Виконано вихід з акаунту', 3000);
 		UserStore.trigger('update');
@@ -96,7 +96,7 @@ UserStore.dispatch = AppDispatcher.register(action => {
 		UserStore.trigger('update');
 		Materialize.toast(`Виконано вхід у акаунт \n
 											 під логіном ${action.value.login}`, 4000);
-		hashHistory.push('/userInterface');
+		browserHistory.push('/userInterface');
 		break;
 
 	case 'CHANGE_USERINFO':
