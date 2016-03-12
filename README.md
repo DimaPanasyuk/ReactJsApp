@@ -7,6 +7,7 @@
 	<li>Jade</li>
 	<li>Less</li>
 	<li>jQuery</li>
+	<li>loDash</li>
 	<li>Materialize</li>
 </ol>
 
