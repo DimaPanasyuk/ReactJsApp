@@ -1,0 +1,27 @@
+{
+  "dima": {
+    "login": "dima",
+		"password": "123",
+		"name": "Dima",
+		"surname": "Panasyuk",
+		"address": "Sample Address",
+		"email": "Sample Email",
+		"number": "+3809876543",
+		"background": "img/mountain.jpg",
+		"payments": [
+		]
+  },
+  
+  "User1": {
+    "login": "User1",
+		"password": "1234",
+		"name": "User",
+		"surname": "User Surname",
+		"address": "Sample Address",
+		"email": "Sample Email",
+		"number": "+3809876543",
+		"background": "img/mountain.jpg",
+		"payments": [
+		]
+  }  
+}

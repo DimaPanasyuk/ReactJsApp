@@ -1,0 +1,9 @@
+{
+  "injectChanges": true,
+  "files": [
+    "./build.js",
+    "./index.html",
+    "./styles.css"
+  ],
+  "ghostMode": false
+}
