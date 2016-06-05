@@ -32,7 +32,8 @@ ReactDOM.render((
         <Route path='payments'
                component={PaymentsController}>
         </Route>
-      </Route>	
+      </Route>
+      <Route path="*" component={AuthorisationController}/>	
 		</Route>
 	</Router>
 ), document.getElementById('app'));
