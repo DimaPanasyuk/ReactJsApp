@@ -10,7 +10,7 @@ Array.prototype.remove = function(from, to) {
 
 import AppDispatcher     from '../dispatcher/AppDispatcher';
 import MicroEvent        from '../microEvent';
-import { browserHistory   } from 'react-router';
+import { hashHistory   } from 'react-router';
 
 let UserStore;
 
@@ -78,7 +78,7 @@ UserStore.dispatch = AppDispatcher.register(function(action) {
 				Materialize.toast(`Виконано вхід у акаунт ${login}`, 4000);
 
 				UserStore.trigger('update');
-				browserHistory.push('/jek/profile');
+				hashHistory.push('/jek/profile');
 				break;
 
 			} else {
@@ -96,7 +96,7 @@ UserStore.dispatch = AppDispatcher.register(function(action) {
 
 	case 'USER_LOGOUT': 
 		
-		browserHistory.push('/');
+		hashHistory.push('/');
 		UserStore.current_user = {};
 		Materialize.toast('Виконано вихід з акаунту', 3000);
 		UserStore.trigger('update');
@@ -108,7 +108,7 @@ UserStore.dispatch = AppDispatcher.register(function(action) {
 		UserStore.trigger('update');
 		Materialize.toast(`Виконано перший вхід у акаунт 
 											 під логіном ${action.value.login}`, 4000);
-		browserHistory.push('/jek/profile');
+		hashHistory.push('/jek/profile');
 		break;
 
 	case 'CHANGE_USERINFO':

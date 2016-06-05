@@ -197,7 +197,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _reactDom2.default.render(_react2.default.createElement(
 	_reactRouter.Router,
-	{ history: _reactRouter.browserHistory },
+	{ history: _reactRouter.hashHistory },
 	_react2.default.createElement(
 		_reactRouter.Route,
 		{ path: '/', component: _App2.default },
@@ -210,7 +210,8 @@ _reactDom2.default.render(_react2.default.createElement(
 				component: _ProfileController2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: 'payments',
 				component: _PaymentsController2.default })
-		)
+		),
+		_react2.default.createElement(_reactRouter.Route, { path: '*', component: _AuthorisationController2.default })
 	)
 ), document.getElementById('app'));
 
