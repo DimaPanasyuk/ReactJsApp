@@ -1,0 +1,23 @@
+{
+
+	"User1": {
+
+		"login"      : "User1",
+		"password"   : "1234",
+		"name" 		 : "Ім’я",
+		"surname"    : "Прізвище",
+		"address"    : "Адреса",
+		"email"      : "Електронна пошта",
+		"number"     : "+3807583743",
+		"background" : "img/mountain.jpg",
+		"payments"   : [
+
+			{
+				"payment_name": "Водоканал",
+				"payment_account": "528985235",
+				"payment_title": "В",
+				"payment_color": "#374855"
+			}
+		]
+ 	}
+}
